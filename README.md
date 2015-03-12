@@ -1,3 +1,5 @@
-The OpenShift `nodejs` cartridge documentation can be found at:
+# Cap de pinya!
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#nodejs
+Vols tenir la millor colla del mon? Llavors, aquesta es la teva app para organitzar la teva pinya.
+
+## Força, Equilibri, Valor y Seyn
