@@ -1,10 +1,12 @@
 var express = require('express');
+var favicon = require('serve-favicon');
 var app = express();
 
 var logger = require('./logger');
 app.use(logger);
 
 app.use(express.static('public'));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 var castellers = require('./routes/castellers');
 app.use('/castellers', castellers);
