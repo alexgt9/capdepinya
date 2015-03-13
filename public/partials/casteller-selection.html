@@ -3,6 +3,6 @@
 </div>  
 <ul ng-show="map.active">
 	<input autofocus ng-model="query">
-	<li ng-show="!map.castellersList.length" role="presentation">No castellers to select</li>
+	<li ng-show="!map.castellersList.length" role="presentation">No hi ha castellers!</li>
 	<li ng-repeat="casteller in map.castellersList | filter:query" role="presentation" ng-click="map.selectCasteller(casteller)">{{ casteller.name}}</li>
 </ul>

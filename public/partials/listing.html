@@ -2,7 +2,7 @@
   <form class='col' name="newCastellerForm" ng-submit="createCastellerCtrl.addCasteller(listing)">
 
     <!--  Review Form -->
-    <h5>Add a Casteller</h5>
+    <h5>Afegeix a Casteller</h5>
     <div class="input-field">
       <input id="name" required ng-model="createCastellerCtrl.casteller.name" placeholder="Name" type="text" class="validate" title="Name">
     </div>
@@ -10,12 +10,12 @@
 
   <h4>Castellers</h4>
   <ul class="collection">
-    <li ng-show="!listing.castellersList.length">No castellers to select</li>
+    <li class="collection-item" ng-show="!listing.castellersList.length">No hi ha castellers!</li>
+    <!--  Live Preview -->
+    <li class="collection-item" ng-show="createCastellerCtrl.casteller.name">{{ createCastellerCtrl.casteller.name }}</li>
     <li class="collection-item" ng-repeat="casteller in listing.castellersList">
       <b>{{ casteller.name }}</b>
       <a href="#!" class="secondary-content" ng-click="listing.deleteCasteller(casteller.id)"><i class="mdi-navigation-close"></i></a>
     </li>
-    <!--  Live Preview -->
-    <li class="collection-item" ng-show="createCastellerCtrl.casteller.name">{{ createCastellerCtrl.casteller.name }}</li>
   </ul>
 </div>
