@@ -3,7 +3,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>Cap de Pinya</title>
-	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css">
 	<link rel="stylesheet" href="css/main.css">
 
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -25,10 +25,13 @@
 </head>
 <body>
 	<div class="row">
-	  <div class="col-md-2">
+	  <div class="col s2">
 		<all-castellers></all-castellers>
 	  </div>
-	  <div class="col-md-10">
+	  <div>
+	  	<casteller-selection></casteller-selection>
+	  </div>
+	  <div class="col s10">
 		<div id="castellers-map-wrapper">
 			<ng-include src="'castells/pilar.svg'" style="max-width: 100%; max-height: 100%;"></ng-include>
 	  </div>
@@ -38,6 +41,7 @@
 	<script src="bower_components/angular/angular.min.js"></script>
 	<script src="bower_components/angular-route/angular-route.min.js"></script>
 	<script src="bower_components/angular-resource/angular-resource.min.js"></script>
+	<script src="bower_components/materialize/dist/js/materialize.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/services.js"></script>
 </body>

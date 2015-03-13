@@ -1,20 +1,21 @@
-<h2>Castellers</h2>
-<ul>
-	<li ng-show="!listing.castellersList.length">No castellers to select</li>
-	<li ng-repeat="casteller in listing.castellersList"><b>{{ casteller.name }}</b><span class="glyphicon glyphicon-remove pull-right" ng-click="listing.deleteCasteller(casteller.id)"></span></li>
+<div ng-controller="CreateCastellerController as createCastellerCtrl">
+  <form class='col' name="newCastellerForm" ng-submit="createCastellerCtrl.addCasteller(listing)">
 
-	<form name="newCastellerForm" ng-controller="CreateCastellerController as createCastellerCtrl"
-		ng-submit="createCastellerCtrl.addCasteller(listing)">
-      <!--  Live Preview -->
-	  <li ng-show="createCastellerCtrl.casteller.name">{{ createCastellerCtrl.casteller.name }}</li>
+    <!--  Review Form -->
+    <h5>Add a Casteller</h5>
+    <div class="input-field">
+      <input id="name" required ng-model="createCastellerCtrl.casteller.name" placeholder="Name" type="text" class="validate" title="Name">
+    </div>
+  </form>
 
-      <!--  Review Form -->
-      <h4>Add a Casteller</h4>
-      <fieldset class="form-group">
-        <input required ng-model="createCastellerCtrl.casteller.name" type="text" class="form-control" placeholder="Full name" title="Full name"></input>
-      </fieldset>
-      <fieldset class="form-group">
-        <input type="submit" class="btn btn-primary pull-right" value="New Casteller" />
-      </fieldset>
-    </form>
-</ul>
+  <h4>Castellers</h4>
+  <ul class="collection">
+    <li ng-show="!listing.castellersList.length">No castellers to select</li>
+    <li class="collection-item" ng-repeat="casteller in listing.castellersList">
+      <b>{{ casteller.name }}</b>
+      <a href="#!" class="secondary-content" ng-click="listing.deleteCasteller(casteller.id)"><i class="mdi-navigation-close"></i></a>
+    </li>
+    <!--  Live Preview -->
+    <li class="collection-item" ng-show="createCastellerCtrl.casteller.name">{{ createCastellerCtrl.casteller.name }}</li>
+  </ul>
+</div>

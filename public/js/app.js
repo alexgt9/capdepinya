@@ -3,7 +3,7 @@
 
     app.directive("castellerSelection", function() {
         return {
-            restrict: 'E',
+            restrict: 'EA',
             templateUrl: "partials/casteller-selection.html",
             controller: ['Casteller', function(Casteller){
 
@@ -18,7 +18,7 @@
                 };
 
                 this.selectCasteller = function(casteller){
-                    this.selectedCasteller = casteller.nickname;
+                    this.selectedCasteller = casteller.name;
                     this.active = false;
                 };
             }],
@@ -56,9 +56,10 @@
             this.casteller.id = new Date().getTime();
             
             Casteller.save(this.casteller);
-            console.log(this.casteller);
 
-            listing.castellersList.push(this.casteller);
+            toast('Amunt, un més!', 4000);
+
+            listing.castellersList.unshift(this.casteller);
             this.casteller = {};
             this.duplicated = false;
             this.cache.removeAll();
