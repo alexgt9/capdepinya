@@ -1,12 +1,15 @@
 var express = require('express');
 var favicon = require('serve-favicon');
 var app = express();
+var bodyParser = require('body-parser');
 
 var logger = require('./logger');
 app.use(logger);
 
 app.use(express.static('public'));
 app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 var castellers = require('./routes/castellers');
 app.use('/castellers', castellers);

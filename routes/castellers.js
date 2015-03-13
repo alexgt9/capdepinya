@@ -1,30 +1,30 @@
 var express = require('express');
 var router = express.Router();
-var bodyParser = require('body-parser');
-var parseUrlencoded = bodyParser.urlencoded({extended: false});
 
-var castellers = {
-	'1': {
-		'name': 'Pepe',
+var castellers = [
+	{
+		'id': '1',
+		'name': 'Pepe'
 	},
-	'2': {
-		'name': 'Matu',
+	{
+		'id': '2',
+		'name': 'Matu'
 	},
-	'3': {
-		'name': 'Candela',
+	{
+		'id': '3',
+		'name': 'Candela'
 	}
-};
+];
 
 router.route('/')
 	.get(function(request, response){
 		response.json(castellers);
 	})
-	.post(parseUrlencoded, function(request, response){
+	.post(function(request, response){
 		var newCasteller = request.body;
-		newCasteller.id = new Date().getTime();
-		castellers[newCasteller.id] = {
-			'name': newCasteller.name,
-		};
+		console.log(newCasteller);
+		newCasteller.id = newCasteller.id || new Date().getTime();
+		castellers.push(newCasteller);
 
 		response.status(201).json(newCasteller);
 	});
@@ -36,17 +36,25 @@ router.route('/:id')
 		next();
 	})
 	.get(function(request, response){
-		var name = castellers[request.castellerId];
-		console.log(request.castellerId);
-		if (!name) {
+		var found = castellers.filter(function(v) {
+		    return v.id == request.castellerId;
+		})[0];
+
+		if (!found) {
 			response.status(404).json("No casteller found with id " + request.castellerId);
 		}else{
-			response.json(name);
+			response.json(found);
 		}
 	})
 	.delete(function(request, response){
-		if (castellers[request.castellerId]) {
-			delete castellers[request.castellerId];
+		var found = castellers.filter(function(v) {
+		    return v.id == request.castellerId;
+		})[0];
+
+		if (found) {
+			castellers = castellers.filter(function(v) {
+			    return v.id != request.castellerId;
+			});
 			response.sendStatus(200);
 		}else{
 			response.status(404).json("Casteller not found");
