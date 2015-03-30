@@ -14,9 +14,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 var castellers = require('./routes/castellers');
 app.use('/castellers', castellers);
 
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+var ipaddress = process.env.OPENSHIFT_NODEJS_IP || "0.0.0.0";
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 app.listen(port, ipaddress, function(){
-	console.log('Running Express');
+	console.log('Running Express at '+ipaddress+':'+port);
 });
